@@ -1,0 +1,23 @@
+name: Trigger Contribution Update
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger-profile-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger profile contribution update
+        env:
+          PROFILE_REPO_TOKEN: ${{ secrets.PROFILE_REPO_TOKEN }}
+        run: |
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $PROFILE_REPO_TOKEN" \
+            -H "X-GitHub-Api-Version: 2026-03-10" \
+            https://api.github.com/repos/VaibhavAgarwal2307/VaibhavAgarwal2307/dispatches \
+            -d '{"event_type":"leetcode_sync"}'
