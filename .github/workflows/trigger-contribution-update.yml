@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main
-     
 
 jobs:
   trigger-profile-update:
+    if: contains(github.event.head_commit.message, 'LeetSync')
     runs-on: ubuntu-latest
 
     steps:
