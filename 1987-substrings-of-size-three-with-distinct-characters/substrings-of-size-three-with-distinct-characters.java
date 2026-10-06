@@ -3,7 +3,7 @@ class Solution {
         
         List<Character> list=new ArrayList<>();
 
-        int left=0, c=0;
+        int c=0;
 
         for(int right=0; right<s.length(); right++)
         {
