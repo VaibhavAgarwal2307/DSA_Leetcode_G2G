@@ -7,21 +7,17 @@ class Solution {
 
         for(int right=0; right<s.length(); right++)
         {
-            if(list.contains(s.charAt(right)))
-            {
                 while(list.contains(s.charAt(right)))
                 {
-                    list.remove(Character.valueOf(s.charAt(left)));
-                    left++;
+                    list.remove(0);
                 }
-            }
+            
             
             list.add(s.charAt(right));
-            if(right-left+1==3)
+            if(list.size()==3)
             {
             c++;
-            list.remove(Character.valueOf(s.charAt(left)));
-            left++;
+            list.remove(0);
             }
         }
 
