@@ -6,10 +6,6 @@ class Solution {
         for(int right=0; right<nums.length; right++)
         {
          sum+=nums[right];
-         if(sum>=target)
-         {
-            min=Math.min(right-left+1, min);
-         }
 
          while(sum>=target)
          {
@@ -21,7 +17,7 @@ class Solution {
         
         if(min==Integer.MAX_VALUE)
         return 0;
-        
+
         return min;
     }
 }
