@@ -1,23 +1,22 @@
 class Solution {
     public String makeGood(String s) {
 
-        int l=s.length()+1;
-        String sub="";
-        
-        while(s.length()<l)
-        {
-            l=s.length();
-        for(int i=0; i<s.length()-1; i++)
-        {
-            if(Math.abs(s.charAt(i)-s.charAt(i+1))==32)
-            {
-                sub="" + s.charAt(i)+s.charAt(i+1);
-                s=s.replace(sub,"");
-                break;
-            }
+       Stack<Character> stack=new Stack<>();
 
-        }
-        }
-        return s;
+       stack.push(s.charAt(0));
+
+       for(int i=1; i<s.length(); i++)
+       {
+        if(!stack.isEmpty() && Math.abs(stack.peek()-s.charAt(i))==32)
+        stack.pop();
+
+        else stack.push(s.charAt(i));
+       }
+
+       StringBuilder ans=new StringBuilder();
+       for(char ch: stack)
+       ans.append(ch);
+
+       return ans.toString();
     }
 }
