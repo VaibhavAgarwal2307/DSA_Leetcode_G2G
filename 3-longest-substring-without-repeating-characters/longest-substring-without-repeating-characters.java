@@ -3,16 +3,16 @@ class Solution {
 
         int left=0, max=0;
 
-        List<Character> list=new ArrayList<>();
+        Set<Character> set=new HashSet<>();
 
        for(int right=0; right<s.length(); right++)
        {
-        while(list.contains(s.charAt(right)))
+        while(set.contains(s.charAt(right)))
         {
-            list.remove(left);
+            set.remove(s.charAt(left++));
         }
-        list.add(s.charAt(right));
-        max=Math.max(max, list.size());
+        set.add(s.charAt(right));
+        max=Math.max(max, set.size());
        }
         return max;
     }
