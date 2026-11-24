@@ -1,27 +1,25 @@
 class Solution {
     public int firstUniqChar(String s) {
 
-        List<Character> list=new ArrayList<>();
-        Set<Character> set=new HashSet<>();
+       Map<Character, Integer> map=new LinkedHashMap<>();
+       Set<Character> set=new LinkedHashSet<>();
 
-        for(char ch: s.toCharArray())
+       for(char ch: s.toCharArray())
+       {
+        map.put(ch, map.getOrDefault(ch,0)+1);
+       }
+
+       for(Map.Entry<Character, Integer> entry: map.entrySet())
+       {
+        if(entry.getValue()==1)
         {
-            if(list.contains(ch))
-            {
-                set.add(ch);
-            }
-            list.add(ch);
+            set.add(entry.getKey());
         }
+       }
+       for(char ans: set)
+       return s.indexOf(ans);
 
-        for(char ch: list)
-        {
-            if(!set.contains(ch))
-            {
-               return s.indexOf(ch);
-            }
-        }
-
-        return -1;
+       return -1;
         
     }
 }
