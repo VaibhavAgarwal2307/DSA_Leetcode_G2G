@@ -1,9 +1,22 @@
 class Solution {
     public boolean uniqueOccurrences(int[] arr) {
-    
-   Map<Integer, Long> mp=Arrays.stream(arr).boxed().collect(Collectors.groupingBy(n->n, Collectors.counting()));
+        
+        Map<Integer, Integer> map=new HashMap<>();
+        Set<Integer> set= new HashSet<>();
 
-   return mp.values().stream().distinct().count()==mp.size();
+        for(int n: arr)
+        {
+            map.put(n, map.getOrDefault(n,0)+1);
+        }
 
+        for(int k: map.values())
+        {
+            set.add(k);
+        }
+
+        if(set.size()==map.size())
+        return true;
+
+        return false;
     }
 }
